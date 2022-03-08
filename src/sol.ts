@@ -10,3 +10,4 @@
 import * as sol from './index.js';
 
 sol.init();
+sol.listen();
