@@ -8,18 +8,16 @@
 import terminalKit from 'terminal-kit';
 export const term = terminalKit.terminal;
 
-interface KeyData {
-  isCharacter: boolean;
-  codepoint?: number;
-  code: number | Buffer;
-}
+import { KeyData } from './interfaces.js';
+import * as UI from './UI.js';
 
 export function init() {
-  console.log("\u001B[?1049h");
+  // console.log("\u001B[?1049h");
+  term.fullscreen(true);
   term.hideCursor(true);
-  term.moveTo(1, 1);
-  term.red.bold('hello sol!');
   term.grabInput(true);
+
+  UI.splash();
 }
 
 export function listen() {
@@ -31,7 +29,8 @@ export function listen() {
 }
 
 export function exit() {
-  console.log("\u001B[?1049l");
+  // console.log("\u001B[?1049l");
+  term.fullscreen(false);
   term.hideCursor(false);
   term.grabInput(false);
   setTimeout(() => process.exit(), 100);
