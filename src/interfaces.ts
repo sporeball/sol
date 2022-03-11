@@ -1,6 +1,6 @@
 /*
-  types.ts
-  custom types and declaration mergers
+  interfaces.ts
+  sol interface definitions
   copyright (c) 2022 sporeball
   MIT license
 */
