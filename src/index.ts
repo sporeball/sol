@@ -5,33 +5,37 @@
   MIT license
 */
 
-import terminalKit from 'terminal-kit';
-export const term = terminalKit.terminal;
-
-import { KeyData } from './interfaces.js';
 import * as UI from './UI.js';
 
+import readline from 'readline';
+
 export function init() {
-  // console.log("\u001B[?1049h");
-  term.fullscreen(true);
-  term.hideCursor(true);
-  term.grabInput(true);
+  readline.emitKeypressEvents(process.stdin);
+  process.stdin.setRawMode(true);
+
+  process.stdout.write('\x1b[?1049h');
+  // process.stdout.write('\x1b[?1000h');
+  process.stdout.write('\x1b[?25l');
+  process.stdout.write('\x1b[;H');
+  // process.stdout.write('\x1b[3;10H');
+  // process.stdout.write('\x1b[6n');
 
   UI.splash();
 }
 
 export function listen() {
-  term.on('key', (name: string, matches: string[], data: KeyData) => {
-    if (name === 'CTRL_C') {
+  process.stdin.on('keypress', (str, key) => {
+    if (key.ctrl && key.name === 'c') {
       exit();
+    } else if (key) {
+      console.log(key);
     }
   });
 }
 
 export function exit() {
-  // console.log("\u001B[?1049l");
-  term.fullscreen(false);
-  term.hideCursor(false);
-  term.grabInput(false);
+  process.stdout.write('\x1b[?1049l');
+  process.stdout.write('\x1b[?1000l');
+  process.stdout.write('\x1b[?25h');
   setTimeout(() => process.exit(), 100);
 }

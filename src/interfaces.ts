@@ -5,15 +5,10 @@
   MIT license
 */
 
-export interface KeyData {
-  isCharacter: boolean;
-  codepoint?: number;
-  code: number | Buffer;
+export interface ListOptions {
+  head: string;
+  items: string[];
+  x: number;
+  y: number;
+  width: number;
 }
-
-// defined in @types/terminal-kit
-// namespace Terminal {
-//   interface Impl {
-//     // ...
-//   }
-// }
