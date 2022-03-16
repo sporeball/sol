@@ -5,6 +5,18 @@
   MIT license
 */
 
+import { Zp } from './types.js';
+
+/**
+ * change the current cursor position
+ * @param {Zp} x
+ * @param {Zp} y
+ */
+export function move<T>(x: Zp<T>, y: Zp<T>) {
+  // the escape sequence puts y first!
+  process.stdout.write(`\x1b[${y};${x}H`);
+}
+
 /**
  * show or hide the cursor
  * @param {boolean} show
