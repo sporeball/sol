@@ -8,6 +8,8 @@
 */
 
 import * as sol from './index.js';
+import * as UI from './UI.js';
 
 sol.init();
 sol.listen();
+UI.splash();

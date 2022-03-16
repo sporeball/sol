@@ -5,7 +5,7 @@
   MIT license
 */
 
-import * as UI from './UI.js';
+import * as term from './Terminal.js';
 
 import readline from 'readline';
 
@@ -13,14 +13,12 @@ export function init() {
   readline.emitKeypressEvents(process.stdin);
   process.stdin.setRawMode(true);
 
-  process.stdout.write('\x1b[?1049h');
+  term.fullscreen(true);
+  term.cursor(false);
+  // mouse reporting
   // process.stdout.write('\x1b[?1000h');
-  process.stdout.write('\x1b[?25l');
-  process.stdout.write('\x1b[;H');
-  // process.stdout.write('\x1b[3;10H');
-  // process.stdout.write('\x1b[6n');
 
-  UI.splash();
+  // process.stdout.write('\x1b[6n');
 }
 
 export function listen() {
@@ -34,8 +32,8 @@ export function listen() {
 }
 
 export function exit() {
-  process.stdout.write('\x1b[?1049l');
-  process.stdout.write('\x1b[?1000l');
-  process.stdout.write('\x1b[?25h');
+  term.fullscreen(false);
+  // process.stdout.write('\x1b[?1000l');
+  term.cursor(true);
   setTimeout(() => process.exit(), 100);
 }
