@@ -7,8 +7,10 @@
 
 import { ListOptions } from './interfaces.js';
 
+import str from './lib/str.js';
+
 export function splash() {
-  console.log('\x1b[33msol\x1b[0m');
+  str.yellow.bold('sol');
   // create list...
   // sol
   // n  new project

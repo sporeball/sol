@@ -1,6 +1,6 @@
 /*
-  types.ts
-  sol type definitions
+  src/types.ts
+  type definitions
   copyright (c) 2022 sporeball
   MIT license
 */
