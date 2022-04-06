@@ -5,6 +5,10 @@
   MIT license
 */
 
+export interface ViewOptions {
+  name: string;
+}
+
 export interface ListOptions {
   head: string;
   items: string[];

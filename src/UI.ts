@@ -10,6 +10,7 @@ import { ListOptions } from './interfaces.js';
 import str from './lib/str.js';
 
 export function splash() {
+  // TODO: make the whole thing into a View instead
   str.yellow.bold('sol');
   // create list...
   // sol
