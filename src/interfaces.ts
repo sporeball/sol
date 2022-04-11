@@ -16,3 +16,12 @@ export interface ListOptions {
   y: number;
   width: number;
 }
+
+export interface KeypressData {
+  sequence: string;
+  name: string;
+  ctrl: boolean;
+  meta: boolean; // alt
+  shift: boolean;
+  code: string;
+}

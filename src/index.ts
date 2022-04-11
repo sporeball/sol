@@ -5,9 +5,12 @@
   MIT license
 */
 
-import * as term from './Terminal.js';
-
 import readline from 'readline';
+
+import { KeypressData } from './interfaces.js';
+
+import * as term from './Terminal.js';
+import emitter from './Event.js';
 
 export function init() {
   readline.emitKeypressEvents(process.stdin);
@@ -23,12 +26,8 @@ export function init() {
 }
 
 export function listen() {
-  process.stdin.on('keypress', (str, key) => {
-    if (key.ctrl && key.name === 'c') {
-      exit();
-    } else if (key) {
-      console.log(key);
-    }
+  process.stdin.on('keypress', (str: string, data: KeypressData) => {
+    emitter.emit('keypress', data);
   });
 }
 
