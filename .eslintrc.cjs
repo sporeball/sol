@@ -10,6 +10,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
   ],
   rules: {
+    'no-trailing-spaces': 'error',
     '@typescript-eslint/no-empty-interface': 'off',
   },
 };
