@@ -27,6 +27,13 @@ export function cursor(show: boolean) {
 }
 
 /**
+ * get the position of the cursor
+ */
+export async function position() {
+  process.stdout.write('\x1b[6n');
+}
+
+/**
  * enable or disable the alternate screen buffer
  * @param {boolean} enable
  */

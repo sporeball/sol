@@ -23,5 +23,5 @@ export interface KeypressData {
   ctrl: boolean;
   meta: boolean; // alt
   shift: boolean;
-  code: string;
+  code?: string;
 }
