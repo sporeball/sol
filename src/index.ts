@@ -22,7 +22,6 @@ export function init() {
   // process.stdout.write('\x1b[?1000h');
 
   term.move(20, 1);
-  term.position();
 }
 
 export function listen() {

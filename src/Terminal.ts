@@ -5,7 +5,11 @@
   MIT license
 */
 
+import { pEvent } from 'p-event';
+
 import { Zp } from './types.js';
+
+import emitter from './Event.js';
 
 /**
  * change the current cursor position
@@ -30,7 +34,9 @@ export function cursor(show: boolean) {
  * get the position of the cursor
  */
 export async function position() {
-  process.stdout.write('\x1b[6n');
+  emitter.emit('cprRequest');
+  const [x, y] = await pEvent(emitter, 'cprRequestAck', { multiArgs: true });
+  return [x, y];
 }
 
 /**

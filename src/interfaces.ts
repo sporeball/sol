@@ -19,7 +19,7 @@ export interface ListOptions {
 
 export interface KeypressData {
   sequence: string;
-  name: string;
+  name: string | undefined;
   ctrl: boolean;
   meta: boolean; // alt
   shift: boolean;
