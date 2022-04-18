@@ -19,6 +19,12 @@ const emitter = new events.EventEmitter();
 const keypressBuffer: KeypressData[] = [];
 
 /**
+ * whether a cursor position report has recently been requested
+ * @see cprRequestEvent
+ */
+let flagCprRequested: boolean = false;
+
+/**
  * 'keypress' event callback function
  * this event is emitted every time a key is pressed,
  * but some unrelated operations (e.g. CPR, mouse clicks) will emit it too
@@ -38,12 +44,10 @@ async function keypressEvent(data: KeypressData) {
 
   // if the keypress has a code, it's probably something special
   if (data.code !== undefined) {
-    // could be the result of a CPR, which would emit 'cprRequestAck' afterwards
-    // if that doesn't happen, drop it
+    // could be the result of a CPR, which would have set a flag
+    // if it isn't set, drop it
     if (data.code === '[R' || data.code.match(/^\[\d+;\d+$/)) {
-      try {
-        await pEvent(emitter, 'cprRequestAck', { timeout: 1 });
-      } catch (error) {
+      if (flagCprRequested === false) {
         keypressBuffer.pop();
       }
     }
@@ -68,9 +72,10 @@ async function keypressEvent(data: KeypressData) {
  * @private
  */
 async function cprRequestEvent() {
+  flagCprRequested = true;
+
   // the CPR escape sequence
   process.stdout.write('\x1b[6n');
-
   // either 1 or 2 'keypress' events will be emitted
   // we only need the data from the first one
   await pEvent(emitter, 'keypress');
@@ -85,6 +90,8 @@ async function cprRequestEvent() {
   // (y first!)
   const [y, x] = data.sequence.match(/\d+;\d+/)![0].split(';');
   emitter.emit('cprRequestAck', x, y);
+
+  flagCprRequested = false;
 }
 
 // register everything
