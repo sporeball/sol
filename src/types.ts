@@ -14,12 +14,14 @@ export type Negative<N> =
   N extends number
     // N is assignable to Negative if it matches the template
     // otherwise return never
+    /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
     ? `${N}` extends `-${infer Q}` ? N : never
     : never;
 
 // a rational number (a number with a fractional part)
 export type Rational<N> =
   N extends number
+    /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
     ? `${N}` extends `${infer X}.${infer Y}` ? N : never
     : never;
 

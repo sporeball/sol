@@ -13,7 +13,7 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch",
-    "lint": "eslint '*/**/*.{js,jsx,ts,tsx}' --quiet --fix",
+    "lint": "eslint '*/**/*.{js,jsx,ts,tsx}'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

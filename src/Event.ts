@@ -22,7 +22,7 @@ const keypressBuffer: KeypressData[] = [];
  * whether a cursor position report has recently been requested
  * @see cprRequestEvent
  */
-let flagCprRequested: boolean = false;
+let flagCprRequested = false;
 
 /**
  * 'keypress' event callback function
