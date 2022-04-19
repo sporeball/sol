@@ -5,6 +5,11 @@
   MIT license
 */
 
+export interface ItemOptions {
+  x: number;
+  y: number;
+}
+
 export interface ViewOptions {
   name: string;
 }

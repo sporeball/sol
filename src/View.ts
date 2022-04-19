@@ -1,6 +1,7 @@
 /*
   View.ts
-  sol View ("page") class and related code
+  sol View class and related code
+  for instances of this class, see views.ts
   copyright (c) 2022 sporeball
   MIT license
 */

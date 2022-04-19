@@ -5,6 +5,8 @@
   MIT license
 */
 
+import type views from './views.js';
+
 /**
  * a negative number
  * @see Rational - similar tactic
@@ -32,3 +34,8 @@ export type Zp<N> =
       ? never
       : N
     : never;
+
+/**
+ * any string which is a key of `views`
+ */
+export type KnownView = keyof typeof views;

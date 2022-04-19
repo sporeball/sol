@@ -5,9 +5,20 @@
   MIT license
 */
 
-import { ListOptions } from './interfaces.js';
+import { KnownView } from './types.js';
+
+import views from './views.js';
 
 import str from './lib/str.js';
+
+/**
+ * change the currently active View
+ * @param {KnownView} key string containing the name of a View
+ */
+export function renderView(key: KnownView) {
+  const view = views[key];
+  console.log('rendering ' + view.name);
+}
 
 export function splash() {
   // TODO: make the whole thing into a View instead
@@ -17,12 +28,4 @@ export function splash() {
   // n  new project
   // o  open project
   // O  open most recent
-}
-
-/**
- * create a list of items
- * @param {ListOptions} options
- */
-export function createList(options: ListOptions) {
-  // ...
 }

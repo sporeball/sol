@@ -21,7 +21,7 @@ export function init() {
   // mouse reporting
   // process.stdout.write('\x1b[?1000h');
 
-  term.move(20, 1);
+  term.move(1, 1);
 }
 
 export function listen() {
