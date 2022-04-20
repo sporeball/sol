@@ -11,7 +11,6 @@ export interface ItemOptions {
 }
 
 export interface ViewOptions {
-  name: string;
 }
 
 export interface ListOptions {

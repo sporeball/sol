@@ -8,9 +8,7 @@
 
 import { View } from './View.js';
 
-const splash: View = new View({
-  name: 'splash',
-});
+const splash: View = new View({});
 
 /**
  * default export is an object containing every View defined here

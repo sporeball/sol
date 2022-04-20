@@ -11,13 +11,16 @@ import views from './views.js';
 
 import str from './lib/str.js';
 
+let currentView: KnownView;
+
 /**
  * change the currently active View
  * @param {KnownView} key string containing the name of a View
  */
 export function renderView(key: KnownView) {
-  const view = views[key];
-  console.log('rendering ' + view.name);
+  currentView = key;
+  // const view = views[currentView];
+  console.log('rendering ' + currentView);
 }
 
 export function splash() {
